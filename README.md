@@ -3,6 +3,7 @@ The Industrial Safety Monitoring and Emergency Shutdown System Using LPC2129 is 
 The system uses the LPC2129 (ARM7) microcontroller as the main controller. An IR sensor detects the presence of an object or obstacle, while an emergency push button provides a manual shutdown mechanism using an external interrupt (EINT0).
 When the IR sensor detects a configured danger condition, the microcontroller stops the DC motor through the L293D motor driver, activates the LED indicator, and displays a warning message on the LCD. When the emergency switch is pressed, an external interrupt triggers the emergency shutdown routine.
 This project demonstrates the practical implementation of embedded C programming, ARM7 microcontroller interfacing, sensor monitoring, motor control, LCD interfacing, and external interrupt handling.
+
 Objectives
 - Detect objects or obstacles using an IR sensor.
 - Stop the DC motor when a configured danger condition is detected.
@@ -10,6 +11,7 @@ Objectives
 - Display system status messages on an LCD.
 - Provide visual alerts through an LED indicator.
 - Understand GPIO configuration and peripheral interfacing using the LPC2129 microcontroller.
+
 Features
 - Automatic Obstacle Detection: Uses an IR sensor to detect objects or obstacles.
 - Emergency Shutdown: Uses the EINT0 external interrupt to stop the motor when the emergency switch is pressed.
@@ -18,6 +20,7 @@ Features
 - LED Indication: Provides a visual warning during danger or emergency conditions.
 - ARM7-Based Control: Implements the system using the LPC2129 microcontroller and embedded C.
 - UART Communication: Can support serial communication between the PC and the development board when configured.
+  
 Hardware Components
 - LPC2129 Development Board: Acts as the main controller and processes sensor inputs.
 - IR Sensor: Detects the presence of an object or obstacle.
@@ -28,6 +31,7 @@ Hardware Components
 - LED Indicator: Provides a visual indication of danger or emergency conditions.
 - PC: Used for writing, compiling, downloading, and debugging the embedded C program.
 - Power Supply: Provides the required power to the microcontroller and connected components.
+
 Pin Configuration
 The project uses the following LPC2129 pin assignments:
 - P0.10 – IR Sensor: Configured as an input to read the IR sensor output.
@@ -39,6 +43,7 @@ The project uses the following LPC2129 pin assignments:
 The LCD pin assignments depend on the connections defined in the LCD header file.
 The IR sensor logic assumes that a LOW output indicates the configured danger condition. The LED control uses active-low logic in the current implementation, meaning LOW turns the LED on and HIGH turns it off.
 The EINT0 function must be selected through the appropriate pin configuration register. The emergency switch must also be wired to produce the required falling-edge signal.
+
 Working Principle
 1. System Initialization
 The LPC2129 initializes the LCD, motor control pins, LED, IR sensor input, and EINT0 external interrupt. After initialization, the microcontroller enables interrupts and begins monitoring the system.
@@ -49,6 +54,7 @@ When the IR sensor output becomes LOW, the microcontroller identifies the config
 4. Emergency Shutdown
 When the emergency push button is pressed, the EINT0 external interrupt is triggered. The interrupt service routine sets the emergency flag, stops the motor, and activates the LED.
 The LCD displays an emergency message indicating that the motor has stopped. In the current implementation, the emergency state remains active until the microcontroller is reset.
+
 Applications
 - Conveyor Belt Systems: Demonstrates obstacle detection and motor shutdown.
 - Automated Production Lines: Demonstrates automatic motor stopping when a configured hazard is detected.
